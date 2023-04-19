@@ -4,7 +4,6 @@ import argparse
 import os
 import shutil
 import pyperclip
-import re
 from utils import *
 
 # Set the default output directory
@@ -27,6 +26,10 @@ else:
 
 # Find all file paths using regex
 file_paths = extract_pdf_paths(input_str=input_string)
+
+# create output folder if it does not already exist
+if not os.path.exists(output_folder):
+    os.mkdir(output_folder)
 
 # Copy any available PDF files to the output folder
 for pdf in file_paths:
